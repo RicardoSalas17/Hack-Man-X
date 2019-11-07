@@ -43,8 +43,7 @@ document.onkeydown = e => {
     megaMan.position = 0
     megaMan2.vx = 0
     megaMan2.position = 0
-    
-    
+
   }
 
 

@@ -110,6 +110,9 @@ class Board {
         this.draw()
       }
       this.animate ++
+
+
+
       
       
     }
@@ -137,18 +140,18 @@ class Board {
         this.height = 100
         this.img.src = '../Images/shot-left.png'
         this.animate ++}
-
-
-
-
-
-
-
-
     }
 
 
-
+    isTouching(obstacle) {
+      // algo está tratando de ocupar el mismo espacio en canvas que flash
+      return (
+        this.x < obstacle.x + obstacle.width &&
+        this.x + this.width > obstacle.x &&
+        this.y < obstacle.y + obstacle.height &&
+        this.y + this.height > obstacle.y
+        )
+    }
 
 
 
@@ -271,7 +274,7 @@ class Board {
       this.animate =0
       this.hp = 1
       this.img = new Image()
-      this.img.src = '/Images/batsito.png'
+      this.img.src = '../Images/batsito.png'
     }
     draw() {
       this.x--
