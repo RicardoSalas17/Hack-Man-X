@@ -34,7 +34,8 @@ document.onkeydown = e => {
           megaMan2.shot()
           console.log(megaMan2.status)
           
-          return
+          
+            return
     }
   }
   

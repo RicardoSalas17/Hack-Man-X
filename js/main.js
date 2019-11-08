@@ -80,10 +80,10 @@ function checkColitions() {
   }else if (megaMan.x + 100 >= canvas.width) {
     megaMan.x = canvas.width  - 100
   } 
-  if (megaMan.y <= 0) {
-    megaMan.y = 0
-    megaMan.capturaY = 0
-  }
+  // if (megaMan.y <= 0) {
+  //   megaMan.y = 0
+  //   megaMan.capturaY = 0
+  // }
 
 
   
@@ -93,10 +93,10 @@ function checkColitions() {
     megaMan2.x = canvas.width  - 100
   }
 
-  if (megaMan2.y <= 0) {
-    megaMan2.y = 0
-    megaMan2.capturaY = 0
-  }
+  // if (megaMan2.y <= 0) {
+  //   megaMan2.y = 0
+  //   megaMan2.capturaY = 0
+  // }
 
   // if(badGuy.x <= 0){
   //   badGuy.x = 0
@@ -164,8 +164,8 @@ function drawShots() {
 
 
 function generateBats() {
-  if (frames % 100 === 0) {
-    const randomPosition = Math.floor(Math.random() * canvas.height) + 50
+  if (frames % 250 === 0) {
+    const randomPosition = Math.floor(Math.random() * canvas.height - 100) + 50
     batsPosition =  new Batsito(randomPosition)
     batsGen.push(batsPosition)
     

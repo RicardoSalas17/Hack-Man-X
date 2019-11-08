@@ -30,25 +30,27 @@ class Board {
       this.jumpStrenght = 26
       this.hp = 3
       this.img = new Image()
-      this.img.src = '../Images/megamanstand-right.png'
+      this.img.src = '../Images/entrada.png'
       this.img.onload = () => {
         this.draw()
       }
     }
     draw() {
       if (this.y > canvas.height - this.height) {
+
         this.y = canvas.height - this.height
         this.capturaY =  canvas.height - this.height
+        // this.stand()
+        
       } 
     
       else {
         this.vy++
         
-        
       }
       ctx.drawImage(
         this.img,
-         (this.animate * 1400) / 14,
+        (this.animate * 1400) / 14,
         this.position,
         1400 / 14,
         100,
@@ -56,17 +58,25 @@ class Board {
         this.y,
         this.width,
         this.height
-      )
+        )
+        
+
       
     }
 
-      stand(){
-        this.width = 100
-        this.height = 100
-        this.img.src = '../megamanstand-right'
-        this.animate ++
-        
-      }
+      // stand(){ 
+      //   this.status= "right"
+      // this.img.src = '../Images/megamanstand-right.png'
+      //  this.width = 100
+      // this.height = 100
+      // this.y = canvas.height 
+      // this.x = 8
+      // this.vx = 0
+      // this.vy = 0
+      // this.animate = 0
+      // this.position = 0
+      // this.animate ++
+      // }
       
       
       moveLeft() {
@@ -199,8 +209,8 @@ class Board {
     constructor(x , y) {
       this.x = x
       this.y = y
-      this.width = 50
-      this.height = 50
+      this.width = 30
+      this.height = 30
       this.img = new Image()
       this.img.src = '../Images/municion.png'
       this.img.onload = () => {
@@ -278,6 +288,7 @@ class Board {
     }
     draw() {
       this.x--
+    
       ctx.drawImage(
         this.img,
         (this.animate*440) / 11,
@@ -288,7 +299,8 @@ class Board {
           this.y,
            this.width,
             this.height)
-    }
+            
+          }
     isTouching(obstacle) {
       // algo está tratando de ocupar el mismo espacio en canvas que flash
       return (
@@ -300,6 +312,5 @@ class Board {
         
     }
  
-  
 }
   
