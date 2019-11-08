@@ -12,7 +12,7 @@ class Board {
       //   this.draw()
       // }
     }
-    draw() {
+    draw() {siempre.play()
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
     drawScoreBlue(){

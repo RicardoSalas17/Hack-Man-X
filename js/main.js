@@ -182,6 +182,7 @@ function gameOver() {
   if (megaMan.hp == 0 && megaMan2.hp > 0) {
     clearInterval(interval)
     // interval= null
+    siempre.pause()
     loose.play()
     ctx.font = '30px Arial'
     ctx.fillStyle = 'white'
@@ -192,6 +193,7 @@ function gameOver() {
    if (megaMan2.hp == 0 && megaMan.hp > 0){
     clearInterval(interval)
     // interval= null
+    siempre.pause()
     loose.play()
     ctx.font = '30px Arial'
     ctx.fillStyle = 'white'
@@ -216,7 +218,7 @@ function drawShots() {
 
 
 function generateBats() {
-  if (frames % 250 === 0) {
+  if (frames % 150 === 0) {
     const randomPosition = Math.floor(Math.random() * canvas.height - 100) + 50
     batsPosition =  new Batsito(randomPosition)
     batsGen.push(batsPosition)
@@ -240,19 +242,20 @@ function update() {
   megaManAnimation()
   board.drawScoreRed()
   // gameOver()
+  gameOver()
   board.drawScoreBlue()
 
   generateBats()
   drawBats()
 
-
+  // siempre.play()
   // badGuyAnimation()
   megaMan.draw()
   megaMan2.draw()
   megaMan.x += megaMan.vx
   megaMan.y += megaMan.vy
   megaMan.y += gravity
-
+  
   megaMan2.x += megaMan2.vx
   megaMan2.y += megaMan2.vy
   megaMan2.y += gravity
@@ -261,7 +264,6 @@ function update() {
   checkColitions()
 
 
-  gameOver()
 
 
 
