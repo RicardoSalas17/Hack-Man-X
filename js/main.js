@@ -187,7 +187,7 @@ function gameOver() {
     ctx.font = '30px Arial'
     ctx.fillStyle = 'white'
     ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 )
-    ctx.fillText('Ganador Mega Man Red', canvas.width / 2.5 , canvas.height / 2 +50 )
+    ctx.fillText('Ganador Mega Man 2', canvas.width / 2.5 , canvas.height / 2 +50 )
     console.log("ganador red")
   } else 
    if (megaMan2.hp == 0 && megaMan.hp > 0){
@@ -198,7 +198,7 @@ function gameOver() {
     ctx.font = '30px Arial'
     ctx.fillStyle = 'white'
     ctx.fillText('Game Over', canvas.width / 2 , canvas.height / 2 )
-    ctx.fillText('Ganador Mega Man Blue', canvas.width / 2.5, canvas.height / 2 +50 )
+    ctx.fillText('Ganador Mega Man 1', canvas.width / 2.5, canvas.height / 2 +50 )
     console.log("ganador blue")
   }
 
