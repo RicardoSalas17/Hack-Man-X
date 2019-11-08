@@ -12,6 +12,15 @@ let counter = 0
 let batsPosition =[]
 let scoere = 0
 let audioBack = new Audio()
+let image = {
+    bg:"https://drive.google.com/open?id=1US8WDk5mOqr8vi1XsZRbaX6CGK2UUbF-",
+    entrada: "https://drive.google.com/open?id=1Fy4OnC78ieuce5n9T1rJT_Orq8wcho4a",
+    entrada2:"https://drive.google.com/open?id=1ouuLBsOTKvbyURLvXSmlu1o082gDP_s-",
+    dePieDer: "https://drive.google.com/open?id=1nHTDDCCIldHg7OaFYR003xaHrMoJe8WP",
+    dePieDer2: "https://drive.google.com/open?id=1z79MaFsoZLaFK1TdlBMZmntS4q0ErCZR",
+    dePieIzq: "https://drive.google.com/open?id=10H0Oyn3SrT6x04qii-FAU9993FmK-DSO",
+    dePieIzq2: "https://drive.google.com/open?id=18tC4CvnNz778cpEJhprPeOMcEjFq5FdG",
+}
 
 // Clases
 
@@ -24,7 +33,7 @@ class Board {
       this.height = canvas.height
       this.img = new Image()
     //    this.img.src= 'https://image.freepik.com/vector-gratis/codigo-binario-fondo-negro_1302-11246.jpg'
-    this.img.src= '/Images/bg.jpg'
+    this.img.src= image.bg
       this.img.onload = () => {
         this.draw()
       }
