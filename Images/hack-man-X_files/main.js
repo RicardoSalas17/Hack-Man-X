@@ -36,7 +36,7 @@ loose.src = "../Audio/final.MP3"
 let inicio = new Audio()
 inicio.src = "../Audio/inicio.MP3"
 let siempre = new Audio()
-siempre.src = "https://dl.dropboxusercontent.com/s/vhtk5j79358q9jf/siempre.MP3?dl=0"
+siempre.src = "../Audio/siempre.MP3"
 let btnPlay = document.getElementById("jugar")
 let divInst = document.getElementById("inst")
 
