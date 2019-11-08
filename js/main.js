@@ -7,6 +7,28 @@ const obstacles = []
 const batsGen = []
 let counter = 0
 let batsPosition =[]
+let image = {
+  bg:"https://dl.dropboxusercontent.com/s/boygkfpdaidmh5z/bg.jpg?dl=0",
+  entrada: "https://dl.dropboxusercontent.com/s/9u52ho4cegyjw4u/entrada.png?dl=0",
+  entrada2:"https://dl.dropboxusercontent.com/s/moxqqp87bxx4dq2/entrada2.png?dl=0",
+  dePieDer: "https://dl.dropboxusercontent.com/s/dim3s7lyl90rptp/megamanstand-right.png?dl=0",
+  dePieDer2: "https://dl.dropboxusercontent.com/s/4326ooime5vuhmn/megamanstand-right-2.png?dl=0",
+  dePieIzq: "https://dl.dropboxusercontent.com/s/a2ic1wtnluo8nlv/megamanstand-left.png?dl=0",
+  dePieIzq2: "https://dl.dropboxusercontent.com/s/ftwc8b90p990c5f/megamanstand-left-2.png?dl=0",
+  badGuy: "https://dl.dropboxusercontent.com/s/0npwf6pwh0yt7v6/badguy.png?dl=0",
+  batsito: "https://dl.dropboxusercontent.com/s/mnw27xtujwfv3ld/batsito.png?dl=0",
+  caminDer: "https://dl.dropboxusercontent.com/s/0jgjdlv19y0jsbh/mmx_x-right.png?dl=0",
+  caminDer2: "https://dl.dropboxusercontent.com/s/5w33kww99dnfggw/mmx_x-right-2.png?dl=0",
+  caminIzq: "https://dl.dropboxusercontent.com/s/x335qdq3h0qrd80/mmx_x-left.png?dl=0",
+  caminIzq2: "https://dl.dropboxusercontent.com/s/7sv2kaq7t2tsuhm/mmx_x-left-2.png?dl=0",
+  saltoDer: "https://dl.dropboxusercontent.com/s/bj70yrw3kqxj6eh/mmx-x-jump-right.png?dl=0",
+  saltoDer2: "https://dl.dropboxusercontent.com/s/69yh932fvlupcqi/mmx-x-jump-right-2.png?dl=0",
+  municion: "https://dl.dropboxusercontent.com/s/atsyyq1tak7349e/municion.png?dl=0",
+  shotDer: "https://dl.dropboxusercontent.com/s/lfvnc4d50noca0y/shot-right.png?dl=0",
+  shotDer2: "https://dl.dropboxusercontent.com/s/sxradfyk66kmtuz/shot-right-2.png?dl=0",
+  shotIzq: "https://dl.dropboxusercontent.com/s/01schtfkomwkjkj/shot-left.png?dl=0",
+  shotIzq2: "https://dl.dropboxusercontent.com/s/am3ns11vrmkj1pf/shot-left-2.png?dl=0"
+}
 onload = () => {
   update()
 }

@@ -5,6 +5,7 @@ class Board {
       this.width = canvas.width
       this.height = canvas.height
       this.img = new Image()
+      this.img.src= image.bg
       this.img.onload = () => {
         this.draw()
       }
@@ -30,7 +31,7 @@ class Board {
       this.jumpStrenght = 26
       this.hp = 3
       this.img = new Image()
-      this.img.src = '../Images/entrada.png'
+      this.img.src = image.dePieDer
       this.img.onload = () => {
         this.draw()
       }
@@ -85,7 +86,7 @@ class Board {
         this.height = 100
         this.vx -= 1
         this.position = 1
-        this.img.src = '../Images/mmx_x-left.png'
+        this.img.src = image.caminIzq
         this.animate ++
 
     }
@@ -95,7 +96,7 @@ class Board {
       this.height = 100
       this.vx += 1
       this.position = 1
-      this.img.src = '../Images/mmx_x-right.png'
+      this.img.src = image.caminDer
       this.animate ++
 
       
@@ -115,7 +116,7 @@ class Board {
         this.width,
         this.height
       )
-       this.img.src = '../Images/mmx-x-jump-right.png'
+       this.img.src = image.saltoDer
        this.img.onload = () => {
         this.draw()
       }
@@ -128,13 +129,14 @@ class Board {
     }
     shot(){
       if(this.status === "right"){
-      if(frames % 1 === 0){
+      if(frames % 2 === 0){
         const munition = new Municion ( this.x + 100 ,   this.capturaY + 20)
         obstacles.push(munition)
       }
+
       this.width = 100
       this.height = 100
-      this.img.src = '../Images/shot-right.png'
+      this.img.src = image.shotDer
       this.animate ++}
     
       
@@ -143,12 +145,13 @@ class Board {
 
       if(this.status === "left"){
         if(frames % 1 === 0){
-          const munition = new Municion ( this.x + 100 ,   this.capturaY + 20)
+          const munition = new Municion ( this.x  ,   this.capturaY + 20)
           obstacles.push(munition)
         }
+    
         this.width = 100
         this.height = 100
-        this.img.src = '../Images/shot-left.png'
+        this.img.src = image.shotIzq
         this.animate ++}
     }
 
@@ -180,7 +183,7 @@ class Board {
       this.position = 0
       this.hp = 20
       this.img = new Image()
-      this.img.src = '../Images/badguy.png'
+      this.img.src = image.badGuy
       this.img.onload = () => {
         this.draw()
       }
@@ -207,36 +210,33 @@ class Board {
 
   class Municion {
     constructor(x , y) {
+      this.status = "left"
       this.x = x
       this.y = y
       this.width = 30
       this.height = 30
       this.img = new Image()
-      this.img.src = '../Images/municion.png'
+      this.img.src = image.municion
       this.img.onload = () => {
         this.draw()
       }
     }
     draw() {
-      if(megaMan.status === "right"){
-       if(megaMan.status === "right") {
-      this.x += 9}
-      else if(megaMan.status === "left"){
-        this.x += 9
-      }
-      ctx.drawImage(
-      this.img,
-      this.x,
-      this.y,
-      this.width,
-      this.height)}
+      // if(megaMan.status === "right"){
+      //  if(megaMan.status === "right") {
+      // this.x += 9}
+      // else if(megaMan.status === "left"){
+      //   this.x += 9
+      // }
+      // ctx.drawImage(
+      // this.img,
+      // this.x,
+      // this.y,
+      // this.width,
+      // this.height)}
 
-       if(megaMan2.status === "right"){
-        if(megaMan2.status === "right") {
-          this.x += 9}
-          else if(megaMan2.status === "left"){
-            this.x += 9
-          }
+       if(this.status  === "right"){
+        this.x += 9
         ctx.drawImage(
         this.img,
         this.x,
@@ -244,34 +244,43 @@ class Board {
         this.width,
         this.height)}
 
+        if(this.status === "left"){
+          this.x -= 9
+          ctx.drawImage(
+          this.img,
+          this.x,
+          this.y,
+          this.width,
+          this.height)}
 
-          if(megaMan.status === "left"){
-            if(megaMan.status === "right") {
-              this.x -= 9}
-              else if(megaMan.status === "left"){
-                this.x -= 9}
-            ctx.drawImage(
-            this.img,
-            this.x,
-            this.y,
-            this.width,
-            this.height)}
 
-            if(megaMan2.status === "left"){
-              if(megaMan2.status === "right") {
-                this.x -= 9}
-                else if(megaMan2.status === "left"){
-                  this.x -= 9
-                }
-            ctx.drawImage(
-              this.img,
-              this.x,
-              this.y,
-              this.width,
-              this.height)}
+    //       if(megaMan.status === "left"){
+    //         if(megaMan.status === "right") {
+    //           this.x -= 9}
+    //           else if(megaMan.status === "left"){
+    //             this.x -= 9}
+    //         ctx.drawImage(
+    //         this.img,
+    //         this.x,
+    //         this.y,
+    //         this.width,
+    //         this.height)}
+
+    //         if(megaMan2.status === "left"){
+    //           if(megaMan2.status === "right") {
+    //             this.x -= 9}
+    //             else if(megaMan2.status === "left"){
+    //               this.x -= 9
+    //             }
+    //         ctx.drawImage(
+    //           this.img,
+    //           this.x,
+    //           this.y,
+    //           this.width,
+    //           this.height)}
       
-    }
-  }
+    // }
+  }}
 
 
 
@@ -284,7 +293,7 @@ class Board {
       this.animate =0
       this.hp = 1
       this.img = new Image()
-      this.img.src = '../Images/batsito.png'
+      this.img.src = image.batsito
     }
     draw() {
       this.x--

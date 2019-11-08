@@ -130,75 +130,96 @@ class Board {
       }
     }
     draw(){
-        if(frames <= 220){
-            if (this.y > canvas.height - this.imgEntrada.height +40) {
-                this.y = canvas.height - this.imgEntrada.height +40
+  
+            if (this.y > canvas.height - this.imgDePieDer.height ) {
+                this.y = canvas.height - this.imgDePieDer.height 
               }else {
                 this.vy++
+              
               }
           ctx.drawImage(
-              this.imgEntrada,
+              this.imgDePieDer,
               (this.animate * 1600) / 16,
               this.position,
               1600 / 16,
               100,
               this.x,
               this.y,
-              this.imgEntrada.width,
-              this.imgEntrada.height
+              this.width,
+              this.height
               )
       
-        } 
-        else 
- 
-            if(this.status = "left"){
-                if (this.y > canvas.height - this.height) {
-                    this.y = canvas.height - this.height
-                    // this.capturaY =  canvas.height - this.height
-                    // this.stand()
-                  }else {
-                    this.vy++
-                  }
-              ctx.drawImage(
-                  this.imgDePieDer,
-                  (this.animate * 1600) / 16,
-                  this.position,
-                  1600 / 16,
-                  100,
-                  this.x = 55,
-                  this.y,
-                  this.width ,
-                  this.height
-              )
-            } 
-
-          
-        
+    
+    
     }
     moveLeft() {
     this.status= "left"
     // this.width = 100
     // this.height = 100
-    this.vx -= 1
+    this.vx -= 3
     this.position = 0
     // this.imgCaminIzq
     this.animate ++
+    console.log("---------khdashkjdashkjads-->", this.vx)
 
     }
 
     moveRight() {
-     console.log("heyderecha" )
-      this.status= "right"
-    //   this.width = 100
-    //   this.height = 100
-      this.vx += 1
-    //   this.img.src = image.caminDer
-    //   console.log("imagen", this.caminDer)
-      this.animate ++
+        this.status= "right"
+        this.width = 100
+        this.height = 100
+        this.vx += 3
+        this.position = 0
+        // this.imgs.src = '../Images/mmx_x-right.png'
+        this.animate ++
     }
+
+    
 
 
 }
+
+
+
+class Batsito {
+    constructor(y) {
+      this.x = canvas.width
+      this.y = y
+      this.width = 140
+      this.height = 140
+      this.animate =0
+      this.hp = 1
+      this.img = new Image()
+      this.img.src = image.batsito
+    }
+    draw() {
+      this.x--
+    
+      ctx.drawImage(
+        this.img,
+        (this.animate*440) / 11,
+        0,
+        440 / 11,
+        60,
+         this.x,
+          this.y,
+           this.width,
+            this.height)
+            
+          }
+    isTouching(obstacle) {
+      // algo está tratando de ocupar el mismo espacio en canvas que flash
+      return (
+        batsPosition.x < obstacle.x + obstacle.width &&
+        batsPosition.x + batsPosition.width > obstacle.x &&
+        batsPosition.y < obstacle.y + obstacle.height &&
+        batsPosition.y + batsPosition.height > obstacle.y
+        )
+        
+    }
+ 
+}
+  
 
 
 // instancias
@@ -222,6 +243,7 @@ function megaManAnimation() {
      }
 
      console.log("frames inicio", frames)
+   
 
     //  if(megaMan2.animate > 0){
     //    megaMan2.animate = 0
@@ -232,7 +254,22 @@ function megaManAnimation() {
     
  }
 
+ function generateBats() {
+    if (frames % 250 === 0) {
+      const randomPosition = Math.floor(Math.random() * canvas.height - 100) + 50
+      batsPosition =  new Batsito(randomPosition)
+      batsGen.push(batsPosition)
+      
+    }
+  }
+  
+  
+  function drawBats() {
+    batsGen.forEach(batsPosition  => batsPosition.draw())
+  }
+
  function update() {
+     console.log("ahsdñasnckans", megaMan.vx)
     frames++
     // clearCanvas()
     board.draw()
@@ -256,8 +293,8 @@ function megaManAnimation() {
     //  badGuy.x += badGuy.vx
     //  badGuy.y += badGuy.vy
     // badGuy.y += gravity
-    // generateBats()
-    // drawBats()
+    generateBats()
+    drawBats()
     // drawShots()
     // batsitoDead()
 
@@ -278,6 +315,7 @@ document.onkeydown = e => {
       case 39:
         megaMan.moveRight()
         stay = "right"
+        console.log("DERECHAAAAA", megaMan.vx)
         return
       case 38:
         megaMan.jump()
