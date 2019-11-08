@@ -23,8 +23,8 @@ class Board {
       this.width = canvas.width
       this.height = canvas.height
       this.img = new Image()
-       this.img.src= 'https://image.freepik.com/vector-gratis/codigo-binario-fondo-negro_1302-11246.jpg'
-    // this.img.src= '/Images/bg.jpg'
+    //    this.img.src= 'https://image.freepik.com/vector-gratis/codigo-binario-fondo-negro_1302-11246.jpg'
+    this.img.src= '/Images/bg.jpg'
       this.img.onload = () => {
         this.draw()
       }
