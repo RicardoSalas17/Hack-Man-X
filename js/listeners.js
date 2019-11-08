@@ -1,42 +1,94 @@
-document.onkeydown = e => {
+
+
+  addEventListener("keydown", function(e){
     switch (e.keyCode) {
+      case 13:
+        return  start()
+
       case 37:
         megaMan.moveLeft()
         stay = "left"
-        
-        return
+        break
+
       case 39:
         megaMan.moveRight()
         stay = "right"
-        return
+        break
+
       case 38:
         megaMan.jump()
-        return
+        break
+
         case 77:
             megaMan.shot()
-         
-          return
+          break
 
-          case 90:
-        megaMan2.moveLeft()
-        stay2 = "left"
-        
-        return
+        case 90:
+          megaMan2.moveLeft()
+          stay2 = "left"
+        break
+
       case 88:
         megaMan2.moveRight()
        stay2 = "right"
-        return
+        break
+
       case 83:
         megaMan2.jump()
         return
-        case 32:
+
+      case 32:
           megaMan2.shot()
-       
-          
-          
-            return
+          return
+            
     }
-  }
+  })
+      
+    
+
+// document.onkeydown = e => {
+//     switch (e.keyCode) {
+//       case 13:
+//         return  start()
+
+//       case 37:
+//         megaMan.moveLeft()
+//         stay = "left"
+//         break
+
+//       case 39:
+//         megaMan.moveRight()
+//         stay = "right"
+//         break
+
+//       case 38:
+//         megaMan.jump()
+//         break
+
+//         case 77:
+//             megaMan.shot()
+//           break
+
+//         case 90:
+//           megaMan2.moveLeft()
+//           stay2 = "left"
+//         break
+
+//       case 88:
+//         megaMan2.moveRight()
+//        stay2 = "right"
+//         break
+
+//       case 83:
+//         megaMan2.jump()
+//         return
+
+//       case 32:
+//           megaMan2.shot()
+//           return
+            
+//     }
+//   }
   
   document.onkeyup = e => {
     megaMan.vx = 0
@@ -46,5 +98,13 @@ document.onkeydown = e => {
 
   }
 
+  btnPlay.onclick = function (){
+    start()
+    divInst.classList.add("ocultar")
+
+  }
+
+
+  clearCanvas()
 
   

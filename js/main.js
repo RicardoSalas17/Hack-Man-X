@@ -29,12 +29,26 @@ let image = {
   shotIzq: "https://dl.dropboxusercontent.com/s/01schtfkomwkjkj/shot-left.png?dl=0",
   shotIzq2: "https://dl.dropboxusercontent.com/s/am3ns11vrmkj1pf/shot-left-2.png?dl=0"
 }
-onload = () => {
-  update()
-}
+let loose = new Audio()
+loose.src = "../Audio/final.MP3"
+let inicio = new Audio()
+inicio.src = "../Audio/inicio.MP3"
+let siempre = new Audio()
+siempre.src = "../Audio/siempre.MP3"
+let btnPlay = document.getElementById("jugar")
+let divInst = document.getElementById("inst")
+
+// onload = () => {
+//   update()
+// }
 
 function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  var img = new Image()
+  img.src =image.bg
+  img.onload = function (){
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+  }
+  
 }
 
 function megaManAnimation() {
@@ -97,11 +111,69 @@ function megaManAnimation() {
 
 
 function checkColitions() {
-  if (megaMan.x <= 0) {
-    megaMan.x = 0
-  }else if (megaMan.x + 100 >= canvas.width) {
-    megaMan.x = canvas.width  - 100
-  } 
+  // canvas
+if(megaMan.x <=0){
+  megaMan.x = canvas.width - megaMan.width
+}else if (megaMan.x > canvas.width){
+  megaMan.x =0
+}
+
+if(megaMan2.x <=0){
+  megaMan2.x = canvas.width - megaMan2.width
+}else if (megaMan2.x > canvas.width){
+  megaMan2.x =0
+}
+
+// municiones a baths
+  obstacles.forEach((munition, i) => {
+    if (batsPosition.isTouching(munition)) {
+      obstacles.splice(i, 1)
+      batsPosition.hp--
+    }
+
+  })
+
+      batsGen.forEach((munition, i) => {
+    if (megaMan.isTouching(munition)) {
+      batsGen.splice(i, 1)
+      megaMan.hp--
+    }
+    if (megaMan2.isTouching(munition)) {
+      batsGen.splice(i, 1)
+      megaMan2.hp--
+    }
+  })
+
+      // obstacles.forEach((munition, i) => {
+  //   if (megaMan.isTouching(munition)) {
+  //     obstacles.splice(i, 1)
+  //     megaMan.hp--
+  //   }
+  //   if (megaMan2.isTouching(munition)) {
+  //     obstacles.splice(i, 1)
+  //     megaMan2.hp--
+  //   }
+  // }
+
+
+    // obstacles.forEach((munition, i) => {
+  //   if (megaMan.isTouching(munition)) {
+  //     obstacles.splice(i, 1)
+  //     megaMan.hp--
+  //   }
+  //   if (megaMan2.isTouching(munition)) {
+  //     obstacles.splice(i, 1)
+  //     megaMan2.hp--
+  //   }
+  // }
+
+
+
+  // if (megaMan.x <= 0) {
+  //   megaMan.x = 0
+  // }else if (megaMan.x + 100 >= canvas.width) {
+  //   megaMan.x = canvas.width  - 100
+  // } 
   // if (megaMan.y <= 0) {
   //   megaMan.y = 0
   //   megaMan.capturaY = 0
@@ -109,11 +181,11 @@ function checkColitions() {
 
 
   
-  if(megaMan2.x <= 0){
-    megaMan2.x = 0
-  } else if( megaMan2.x + 100 >= canvas.width){
-    megaMan2.x = canvas.width  - 100
-  }
+  // if(megaMan2.x <= 0){
+  //   megaMan2.x = 0
+  // } else if( megaMan2.x + 100 >= canvas.width){
+  //   megaMan2.x = canvas.width  - 100
+  // }
 
   // if (megaMan2.y <= 0) {
   //   megaMan2.y = 0
@@ -126,25 +198,31 @@ function checkColitions() {
   //   badGuy.x = canvas.width  - 6400 / 16
   // }
 
-  obstacles.forEach((munition, i) => {
-    if (batsPosition.isTouching(munition)) {
-      obstacles.splice(i, 1)
-      batsPosition.hp--
-    }
-  })
+  // obstacles.forEach((munition, i) => {
+  //   if (batsPosition.isTouching(munition)) {
+  //     obstacles.splice(i, 1)
+  //     batsPosition.hp--
+  //   }
+  // }
+  
 
 
   batsGen.forEach((batsPosition, i) => {
     if (megaMan.isTouching(batsPosition )) {
       batsGen.splice(i, 1)
-      megaMan.hp--
+      console.log("baths")
+      megaMan.hp-3
+      gameOver()
+ 
     }
   })
 
   batsGen.forEach((batsPosition, i) => {
     if (megaMan2.isTouching(batsPosition )) {
       batsGen.splice(i, 1)
-      megaMan2.hp--
+      console.log("baths")
+      megaMan2.hp-3
+      gameOver()
     }
   })
 
@@ -158,20 +236,54 @@ function batsitoDead() {
   }
 }
 
-function gameOver() {
-  if (megaMan.hp === 0) {
-    clearInterval(interval)
-    ctx.font = '30px Arial'
-    ctx.fillStyle = 'white'
-    ctx.fillText('Game Over', canvas.width / 2 - 30, canvas.height / 2 - 10)
-  } 
-   if (megaMan2.hp === 0){
-    clearInterval(interval)
-    ctx.font = '30px Arial'
-    ctx.fillStyle = 'white'
-    ctx.fillText('Game Over', canvas.width / 2 - 30, canvas.height / 2 - 10)
+function start(){
+  megaMan= new Megaman2()
+  megaMan2= new Megaman()
+frames = 0
+gravity = 8.9
+obstacles = []
+batsGen = []
+counter = 0
+batsPosition =[]
+if (!interval) interval = setInterval(update, 1000/ 120)
+inicio.play();
+inicio.onended = function (){
+  inicio.src = "../Audio/siempre.MP3"
+ inicio.load()
+ inicio.play()
+}
 
+}
+
+function gameOver() {
+  // clearInterval(interval)
+  // interval= null
+  // ctx.font = '30px Arial'
+  // ctx.fillStyle = 'white'
+  // ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 )
+  console.log("game over -- > entrando")
+  if (megaMan.hp == 0 && megaMan2.hp > 0) {
+    clearInterval(interval)
+    interval= null
+    loose.play()
+    ctx.font = '30px Arial'
+    ctx.fillStyle = 'white'
+    ctx.fillText('Game Over', canvas.width / 2, canvas.height / 2 )
+    ctx.fillText('Ganador Mega Man Red', canvas.width / 2.5 , canvas.height / 2 +50 )
+    console.log("ganador red")
+  } 
+   if (megaMan2.hp == 0 && megaMan.hp > 0){
+    clearInterval(interval)
+    interval= null
+    loose.play()
+    ctx.font = '30px Arial'
+    ctx.fillStyle = 'white'
+    ctx.fillText('Game Over', canvas.width / 2 , canvas.height / 2 )
+    ctx.fillText('Ganador Mega Man Blue', canvas.width / 2.5, canvas.height / 2 +50 )
+    console.log("ganador blue")
   }
+
+
 }
 
 
@@ -206,8 +318,10 @@ function drawBats() {
 
 
 function update() {
+
   frames++
-  clearCanvas()
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  // clearCanvas(interval)
   board.draw()
   generateBats()
   drawBats()
@@ -218,22 +332,25 @@ function update() {
   megaMan.x += megaMan.vx
   megaMan.y += megaMan.vy
   megaMan.y += gravity
-
+  
   megaMan2.x += megaMan2.vx
   megaMan2.y += megaMan2.vy
   megaMan2.y += gravity
   checkColitions()
-
+  drawShots()
+  batsitoDead()
+  
+  board.drawScoreRed()
+  board.drawScoreBlue()
+  gameOver()
   // badGuy.draw()
   //  badGuy.x += badGuy.vx
   //  badGuy.y += badGuy.vy
   // badGuy.y += gravity
 
-  drawShots()
-  batsitoDead()
  
 
-
+console.log("vida", megaMan2.hp)
 
   
   
