@@ -13,14 +13,16 @@ let batsPosition =[]
 let scoere = 0
 let audioBack = new Audio()
 let image = {
-    bg:"https://drive.google.com/open?id=1US8WDk5mOqr8vi1XsZRbaX6CGK2UUbF-",
-    entrada: "https://drive.google.com/open?id=1Fy4OnC78ieuce5n9T1rJT_Orq8wcho4a",
-    entrada2:"https://drive.google.com/open?id=1ouuLBsOTKvbyURLvXSmlu1o082gDP_s-",
-    dePieDer: "https://drive.google.com/open?id=1nHTDDCCIldHg7OaFYR003xaHrMoJe8WP",
-    dePieDer2: "https://drive.google.com/open?id=1z79MaFsoZLaFK1TdlBMZmntS4q0ErCZR",
-    dePieIzq: "https://drive.google.com/open?id=10H0Oyn3SrT6x04qii-FAU9993FmK-DSO",
-    dePieIzq2: "https://drive.google.com/open?id=18tC4CvnNz778cpEJhprPeOMcEjFq5FdG",
+    bg:"https://dl.dropboxusercontent.com/s/boygkfpdaidmh5z/bg.jpg?dl=0",
+    entrada: "https://drive.google.com/open?id=1Fy4OnC78ieuce5n9T1rJT_Orq8wcho4a/view",
+    entrada2:"https://drive.google.com/open?id=1ouuLBsOTKvbyURLvXSmlu1o082gDP_s-/view",
+    dePieDer: "https://drive.google.com/open?id=1nHTDDCCIldHg7OaFYR003xaHrMoJe8WP/view",
+    dePieDer2: "https://drive.google.com/open?id=1z79MaFsoZLaFK1TdlBMZmntS4q0ErCZR/view",
+    dePieIzq: "https://drive.google.com/open?id=10H0Oyn3SrT6x04qii-FAU9993FmK-DSO/view",
+    dePieIzq2: "https://drive.google.com/open?id=18tC4CvnNz778cpEJhprPeOMcEjFq5FdG/view",
+    badGuy: "https://dl.dropboxusercontent.com/s/0npwf6pwh0yt7v6/badguy.png?dl=0",
 }
+
 
 // Clases
 

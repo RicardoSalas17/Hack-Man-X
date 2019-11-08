@@ -12,6 +12,7 @@ body {
   flex-wrap: wrap;
   margin: 0;
   background-image: url(Images/backgmac.jpg);
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 
 }
