@@ -30,6 +30,7 @@ class Board {
       this.position = 0
       this.jumpStrenght = 26
       this.hp = 3
+ 
       this.img = new Image()
       this.img.src = image.dePieDer
       this.img.onload = () => {
@@ -129,15 +130,16 @@ class Board {
     }
     shot(){
       if(this.status === "right"){
-      if(frames % 2 === 0){
-        const munition = new Municion ( this.x + 100 ,   this.capturaY + 20)
+      if(frames % 1 === 0){
+       const munition = new Municion ( this.x + 100 ,   this.capturaY + 20, "right")
         obstacles.push(munition)
       }
 
       this.width = 100
       this.height = 100
       this.img.src = image.shotDer
-      this.animate ++}
+      this.animate ++
+    }
     
       
 
@@ -145,7 +147,7 @@ class Board {
 
       if(this.status === "left"){
         if(frames % 1 === 0){
-          const munition = new Municion ( this.x  ,   this.capturaY + 20)
+          const munition = new Municion ( this.x  ,   this.capturaY + 20, "left")
           obstacles.push(munition)
         }
     
@@ -153,6 +155,10 @@ class Board {
         this.height = 100
         this.img.src = image.shotIzq
         this.animate ++}
+
+        console.log("megaman status", this.status)
+        console.log("MUNICIONES --->", munition)
+        console.log("OBSTACULOS", obstacles)
     }
 
 
@@ -209,8 +215,9 @@ class Board {
   }
 
   class Municion {
-    constructor(x , y) {
-      this.status = "left"
+    constructor(x , y, status) {
+
+      this.status = status
       this.x = x
       this.y = y
       this.width = 30
@@ -236,23 +243,47 @@ class Board {
       // this.height)}
 
        if(this.status  === "right"){
+      
         this.x += 9
         ctx.drawImage(
         this.img,
         this.x,
         this.y,
         this.width,
-        this.height)}
-
-        if(this.status === "left"){
+        this.height)} 
+        
+        // else 
+        if (this.status === "left"){
           this.x -= 9
           ctx.drawImage(
           this.img,
           this.x,
           this.y,
           this.width,
-          this.height)}
+          this.height)
+        }
 
+        // if(megaMan2.status === "right"){
+        //   this.status  = "right"
+        // this.x += 9
+        // ctx.drawImage(
+        // this.img,
+        // this.x,
+        // this.y,
+        // this.width,
+        // this.height)} else{
+        //   this.status = "left"
+        //   this.x -= 9
+        //   ctx.drawImage(
+        //   this.img,
+        //   this.x,
+        //   this.y,
+        //   this.width,
+        //   this.height)
+        // }
+
+ 
+        // console.log("megama2222", megaMan2.status)
 
     //       if(megaMan.status === "left"){
     //         if(megaMan.status === "right") {

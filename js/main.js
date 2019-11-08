@@ -178,8 +178,10 @@ function gameOver() {
 
 
 function drawShots() {
+
+
   obstacles.forEach(munition => munition.draw())
- 
+
 }
 
 

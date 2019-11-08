@@ -14,8 +14,7 @@ document.onkeydown = e => {
         return
         case 77:
             megaMan.shot()
-            console.log(megaMan.status)
-            console.log(megaMan.status)
+         
           return
 
           case 90:
@@ -32,7 +31,7 @@ document.onkeydown = e => {
         return
         case 32:
           megaMan2.shot()
-          console.log(megaMan2.status)
+       
           
           
             return
